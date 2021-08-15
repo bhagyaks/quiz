@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,10 +23,12 @@ namespace quiz.Controllers
         }
 
         // GET: api/Quizzes
+        [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Quiz>>> GetQuiz()
+        public IEnumerable<Quiz> GetQuiz()
         {
-            return await _context.Quiz.ToListAsync();
+            var userId = HttpContext.User.Claims.First().Value;
+            return _context.Quiz.Where(q => q.OwnerId == userId);
         }
 
         // GET: api/Quizzes/5
@@ -77,9 +80,12 @@ namespace quiz.Controllers
         // POST: api/Quizzes
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Quiz>> PostQuiz(Quiz quiz)
         {
+            var userId = HttpContext.User.Claims.First().Value;
+            quiz.OwnerId = userId;
             _context.Quiz.Add(quiz);
             await _context.SaveChangesAsync();
 
