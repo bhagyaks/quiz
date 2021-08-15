@@ -1,0 +1,31 @@
+<mat-card>
+    <mat-card-title>
+        <span *ngIf="!questions.id">NEW QUESTION</span>
+        <span *ngIf="questions.id">EDIT QUESTION</span>
+    </mat-card-title>
+    <mat-card-content>
+        <form>
+            <mat-form-field class="fullWidth">
+                <input [(ngModel)]="questions.text" name="questions" matInput placeholder="question">
+            </mat-form-field>
+            <mat-form-field class="fullWidth">
+                <input [(ngModel)]="questions.correctAnswer" name="correctAnswer" matInput placeholder="Correct Answer">
+            </mat-form-field>
+            <mat-form-field class="fullWidth"> 
+                <input [(ngModel)]="questions.answer1" name="answer1" matInput placeholder="Wrong Answer 1">
+            </mat-form-field>
+            <mat-form-field class="fullWidth">
+                <input [(ngModel)]="questions.answer2" name="answer2" matInput placeholder="Wrong Answer 2">
+            </mat-form-field>
+            <mat-form-field class="fullWidth">
+                <input [(ngModel)]="questions.answer3" name="answer3" matInput placeholder="Wrong Answer 3">
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button *ngIf="!questions.id" (click)="postQuestions(questions)" mat-button>POST</button>
+        <button *ngIf="questions.id" (click)="service.putQuestions(questions)" mat-button>EDIT</button>
+        <button *ngIf="questions.id" (click)="questions = {}" mat-button>NEW</button>
+    </mat-card-actions>
+</mat-card>
+<questionslist></questionslist>

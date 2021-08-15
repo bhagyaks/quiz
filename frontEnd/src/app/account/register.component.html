@@ -1,0 +1,11 @@
+<mat-card>
+        <form [formGroup]="form">
+            <mat-form-field>
+                <input formControlName="email" matInput type="email" placeholder="email">
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="password" matInput type="password" placeholder="password">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="submit($event)">REGISTER</button>
+        </form>
+</mat-card>
