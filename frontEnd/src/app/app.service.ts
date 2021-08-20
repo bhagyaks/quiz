@@ -21,6 +21,9 @@ export class AppService {
             console.log(res);
         });
     }
+    getAllQuiz() {
+        return this.http.get('https://localhost:44397/api/quizzes/all');
+    }
     getQuiz() {
         return this.http.get('https://localhost:44397/api/quizzes');
     }

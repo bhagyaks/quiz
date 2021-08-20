@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using quiz;
 using quiz.Models;
 
 namespace quiz.Controllers
@@ -30,7 +28,11 @@ namespace quiz.Controllers
             var userId = HttpContext.User.Claims.First().Value;
             return _context.Quiz.Where(q => q.OwnerId == userId);
         }
-
+        [HttpGet("all")]
+        public IEnumerable<Quiz> GetAllQuiz()
+        {
+            return _context.Quiz;
+        }
         // GET: api/Quizzes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Quiz>> GetQuiz(int id)

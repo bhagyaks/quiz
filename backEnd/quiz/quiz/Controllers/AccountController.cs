@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,7 +55,7 @@ namespace quiz.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id)
             };
-            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Secret code"));
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("xecretKeywqejane"));
             var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
             var jwt = new JwtSecurityToken(signingCredentials: signingCredentials, claims: claims);
             return new JwtSecurityTokenHandler().WriteToken(jwt);

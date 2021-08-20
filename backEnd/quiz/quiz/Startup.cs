@@ -1,15 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -39,7 +32,7 @@ namespace quiz
             services.AddDbContext<QuizContext> (opt => opt.UseInMemoryDatabase("quiz"));
             services.AddDbContext<UserDbcontext>(opt => opt.UseInMemoryDatabase("user"));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbcontext>();
-            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Secret code"));
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("xecretKeywqejane"));
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Quiz Result</h2>
+<mat-dialog-content>
+  <h3>Your score is {{data.correct}}/{{data.total}}</h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Next</button>
+</mat-dialog-actions>

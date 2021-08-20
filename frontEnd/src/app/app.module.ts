@@ -10,6 +10,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatDialogModule} from '@angular/material/dialog';
 import { AppService } from './app.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QuestionslistComponent } from './questions/questionslist.component';
@@ -20,6 +23,9 @@ import { RegisterComponent } from './account/register.component';
 import { LoginComponent } from './account/login.component';
 import { AuthService } from './auth.service';
 import { AuthInterceptor } from './auth.interceptor';
+import { PlayComponent } from './play/play.component';
+import { PlayQuizComponent } from './play/playQuiz.component';
+import { ResultPopUpComponent } from './play/resultPopUp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +36,9 @@ import { AuthInterceptor } from './auth.interceptor';
     QuestionslistComponent,
     QuizComponent,
     QuizzesComponent,
+    PlayComponent,
+    PlayQuizComponent,
+    ResultPopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +52,9 @@ import { AuthInterceptor } from './auth.interceptor';
     MatCardModule,
     MatListModule,
     MatToolbarModule,
+    MatExpansionModule,
+    MatRadioModule,
+    MatDialogModule,
   ],
   providers: [AppService, AuthService,
   {
@@ -50,6 +62,7 @@ import { AuthInterceptor } from './auth.interceptor';
     useClass: AuthInterceptor,
     multi: true,
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ResultPopUpComponent],
 })
 export class AppModule { }
