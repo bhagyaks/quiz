@@ -6,8 +6,15 @@ import { AppService } from "../app.service";
 })
 export class QuizComponent implements OnInit {
     quiz: any = {};
+    postSuccess = false;
     constructor(public service: AppService){}
     ngOnInit(){
         this.service.quizSelected.subscribe(q => this.quiz = q);
+    }
+    postQuiz(res: any){
+        this.service.postQuiz(res).subscribe((res) => {
+            this.quiz = {};
+            this.postSuccess = true;
+        });;
     }
 }

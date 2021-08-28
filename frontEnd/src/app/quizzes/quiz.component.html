@@ -11,10 +11,10 @@
         </form>
     </mat-card-content>
     <mat-card-actions>
-        <button *ngIf="!quiz.id" (click)="service.postQuiz(quiz)" mat-button>POST</button>
+        <button *ngIf="!quiz.id" (click)="postQuiz(quiz)" mat-button>POST</button>
         <button *ngIf="quiz.id" (click)="service.putQuiz(quiz)" mat-button>EDIT</button>
         <button *ngIf="quiz.id" [routerLink]="['/question',quiz.id]" mat-button>EDIT QUESTION</button>
         <button *ngIf="quiz.id" (click)="quiz ={}" mat-button>NEW</button>
     </mat-card-actions>
 </mat-card>
-<quizzes></quizzes>
+<quizzes [success]="postSuccess"></quizzes>

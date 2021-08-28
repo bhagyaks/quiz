@@ -33,9 +33,7 @@ export class AppService {
         });
     }
     postQuiz(quiz: any) {
-        this.http.post('https://localhost:44397/api/quizzes', quiz).subscribe((res) => {
-            console.log(res);
-        });
+        return this.http.post('https://localhost:44397/api/quizzes', quiz);
     }
     selectQuestion(question: any){
         this.selectedQuestion.next(question);

@@ -19,5 +19,6 @@ export class QuestionComponent implements OnInit {
     postQuestions(question: any) {
         question.quizId = this.quizId;
         this.service.postQuestions(question);
+        this.questions = {};
     }
 }
